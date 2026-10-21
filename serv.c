@@ -93,24 +93,29 @@ int main(int argc, char const* argv[])
             }
             else if(strcmp(token,"add_back") == 0){
                 token = strtok(NULL, " ");
-                list_add_to_back(mylist, atoi(token));
-                sprintf(sbuf, "%s", ACK);
+                val = atoi(token);
+                list_add_to_back(mylist, val);
+                sprintf(sbuf, "%s%d", ACK, val);
             }
             else if(strcmp(token,"add_position") == 0){
                 char *t1 = strtok(NULL, " ");   // index
                 char *t2 = strtok(NULL, " ");   // value
-                list_add_at_index(mylist, atoi(t2), atoi(t1));
-                sprintf(sbuf, "%s", ACK);
+                val = atoi(t2);
+                list_add_at_index(mylist, val, atoi(t1));
+                sprintf(sbuf, "%s%d", ACK, val);
             }
             else if(strcmp(token,"remove_back") == 0){
-                sprintf(sbuf, "%d", list_remove_from_back(mylist));
+                val = list_remove_from_back(mylist);
+                sprintf(sbuf, "%s%d", ACK, val);
             }
             else if(strcmp(token,"remove_front") == 0){
-                sprintf(sbuf, "%d", list_remove_from_front(mylist));
+                val = list_remove_from_front(mylist);
+                sprintf(sbuf, "%s%d", ACK, val);
             }
             else if(strcmp(token,"get") == 0){
                 token = strtok(NULL, " ");
-                sprintf(sbuf, "%d", list_get_elem_at(mylist, atoi(token)));
+                val = list_get_elem_at(mylist, atoi(token));
+                sprintf(sbuf, "VALUE = %d", val);
             }
             else if(strcmp(token,"menu") == 0){
                 sprintf(sbuf, "%s", ACK);
